@@ -1,0 +1,39 @@
+
+1. **Employee Class:**
+   - Represents an employee with attributes `Name` (String) and `Id` (int).
+   - Has a constructor to initialize the employee with a name and ID.
+   - Provides methods to update data and retrieve/display employee information.
+
+2. **Day14_2 Class (Main Class):**
+   - Uses a `Scanner` for user input.
+   - Defines an array of `Employee` objects named `Employees`.
+   - Initializes `TotalCapacity` to 2, indicating the maximum number of employees that can be stored.
+   - Uses an infinite loop to repeatedly present a menu of options to the user.
+
+3. **Menu Options:**
+   - **Option 1 (Add Employee):**
+     - Checks if there is space available in the array.
+     - Asks the user for employee ID and name.
+     - Checks for duplicate IDs before adding a new employee.
+
+   - **Option 2 (Disable Employees):**
+     - Displays information for all existing employees.
+
+   - **Option 3 (Update Employee):**
+     - Asks the user for an employee ID to update.
+     - Searches for the employee with the given ID.
+     - If found, asks the user for a new name and updates the employee data.
+     - Handles cases where the employee is not found.
+
+   - **Option 4 (Exit):**
+     - Exits the program after displaying a thank-you message.
+
+   - **Invalid Option:**
+     - Provides a message for invalid choices.
+
+4. **Key Concepts:**
+   - The program uses an array to store employee objects.
+   - It checks for duplicate IDs when adding new employees.
+   - The update function allows users to modify employee names based on their IDs.
+   - The program is designed to continue running until the user chooses to exit.
+

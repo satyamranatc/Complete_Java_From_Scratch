@@ -1,0 +1,136 @@
+import java.util.Scanner;
+
+class Demo
+{
+    public static void main(String[] args) 
+    {
+
+        int arr[] = {1,2,33,44,1,2,3,4,3,5,6,7,2,22,3,2,3,4,3,2,33,4,5,6,7,8};
+        // System.out.println(arr[0]);
+
+        // for (int i = 0; i < arr.length; i++)
+        // {
+        //     System.out.print(arr[i] + " ");
+        // }
+
+        // for (int i : arr)
+        // {
+        //     System.out.print(i + ", ");
+        // }
+
+
+        //! 1. Find The Count of a Number in Array:
+        // int Element = 2;
+        // int count = 0;
+        // for (int i : arr)
+        // {
+        //     if(i == Element)
+        //     {
+        //         count++;
+        //     }
+        // }
+        // System.out.println(count);     
+        
+        
+        // !2. Find The Index of a Number in Array
+        // int Element = 323;
+
+        // int Index = -1;
+
+        // for(int i = 0; i < arr.length; i++)
+        // {
+        //     if(arr[i] == Element)
+        //     {
+        //         Index = i;
+
+        //     }
+        // }
+        // System.out.println(Index);
+
+
+
+        //!3. Find The Sum of Array
+        // int Sum = 0;
+
+        // for(int i : arr)
+        // {
+        //     Sum = Sum + i;
+        // }
+        // System.out.println(Sum);
+
+
+    
+        // ! 4. Find The Max From a Array:
+
+        // int Max = arr[0];
+        // int Min = arr[0];
+
+        // for(int i : arr)    
+        // {
+        //     if(i > Max)
+        //     {
+        //         Max = i;
+        //     }
+        //     if(i < Min) {
+        //         Min = i;
+        //     }
+        // }
+        // System.out.println(Max);
+        // System.out.println(Min);
+
+
+    
+        // ! 5. Find The Average of Array
+        // ! 6. Print The Table Of Eache Element In Array
+
+
+        // !-------User Input For Array----------
+
+        
+        int Arr[] = {1,2,3};// Array By Littral
+
+        // Array By New Keyword
+        int Arr2[];
+        Arr2 = new int[5];
+
+
+        Scanner sc = new Scanner(System.in);
+        
+        // for(int i = 0; i < 5; i++)
+        // {
+        //     System.out.println("Enter The Value Of Array " +i);
+        //     Arr2[i] = sc.nextInt();
+        // }
+        
+        // System.out.println("--------------------------------");
+
+        // for(int i = 0; i < 5; i++)
+        // {
+        //     System.out.println(Arr2[i] * Arr2[i]);
+        // }
+
+
+        //! 7. Reverse a Array...
+
+        // int X[] = {1,2,3,4,5,6,7,8,9};
+        // int Y[] = new int[X.length];
+
+        // for(int i = 0; i < X.length; i++)
+        // {
+        //     Y[X.length-i-1] = X[i];
+        // }
+
+        // for(int i : Y)
+        // {
+        //     System.out.print(i + " ");
+        // }
+
+
+    //! 8. Find The Two Number Whose Sum is N...
+    int n = 33;
+    int Arr3 []= {1,2,3,4,5,6,7,8,33,2,11,22,20,13};
+
+
+        
+    }
+}

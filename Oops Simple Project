@@ -1,0 +1,87 @@
+import java.util.Scanner;
+class Person
+{
+    int Id;
+    String Name;
+    int Salary;
+
+    public void Fun()
+    {
+        System.out.println("This is a function");
+    }
+
+    public void SetData(int Id,String Name,int Salary)
+    {
+       this.Id = Id;
+       this.Name = Name;
+       this.Salary = Salary;
+    }
+
+    public void GetData()
+    {
+        System.out.println(Id);
+        System.out.println(Name);
+        System.out.println(Salary);
+        System.out.println("----------");
+    }
+}
+
+class Main
+{
+    public static void main(String[] args) 
+    {
+        
+       Person arr[] = new Person[10];
+
+       Scanner Sc = new Scanner(System.in);
+
+       int Index = -1;
+
+       while (1==1) 
+       {
+
+        System.out.println("Press:\n1 For Add\n2 For Display\n3 For Exit\n:= ");
+        int Choice = Sc.nextInt();
+
+        if (Choice == 1) 
+        {
+            Index++;
+            arr[Index] = new Person();
+
+            System.out.println("Enter Id");
+            int Id = Sc.nextInt();
+
+            System.out.println("Enter Name");
+            String Name = Sc.next();
+
+            System.out.println("Enter Salary");
+            int Salary = Sc.nextInt();
+
+            arr[Index].SetData(Id,Name,Salary);
+           
+            
+        }
+        else if (Choice == 2)
+        {
+
+            for (int i = 0; i <= Index; i++)
+            {
+                arr[i].GetData();
+            }
+
+        }
+        else if (Choice == 3)
+        {
+            System.out.println("Byyeeee");
+            break;
+        }
+        else
+        {
+            System.out.println("Wrong Choice");
+        }
+        
+       }
+      
+
+    }
+}

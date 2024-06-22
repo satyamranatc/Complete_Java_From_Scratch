@@ -1,0 +1,153 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Main {
+    public static void main(String[] args) {
+        JFrame frame = new JFrame("Calculator");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 300);
+
+        // Use GridBagLayout
+        frame.setLayout(new GridBagLayout());
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(10, 10, 10, 10);
+        
+        JLabel l1 = new JLabel("Hello, Swing!");
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        frame.add(l1, gbc);
+
+        JTextField E1 = new JTextField(10);
+        gbc.gridx = 1;
+        gbc.gridy = 0;
+        frame.add(E1, gbc);
+
+        JTextField E2 = new JTextField(10);
+        gbc.gridx = 1;
+        gbc.gridy = 1;
+        frame.add(E2, gbc);
+
+        JLabel Result = new JLabel("Result:");
+        gbc.gridx = 0;
+        gbc.gridy = 2;
+        frame.add(Result, gbc);
+
+        JButton b1 = new JButton("Click me");
+        gbc.gridx = 1;
+        gbc.gridy = 2;
+        gbc.gridwidth = 1;
+        frame.add(b1, gbc);
+
+        JButton calcButton = new JButton("Calculator");
+        gbc.gridx = 1;
+        gbc.gridy = 3;
+        frame.add(calcButton, gbc);
+
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String Data1 = E1.getText();
+                String Data2 = E2.getText();
+                try {
+                    int num1 = Integer.parseInt(Data1);
+                    int num2 = Integer.parseInt(Data2);
+                    Result.setText("Result: " + (num1 + num2));
+                } catch (NumberFormatException ex) {
+                    Result.setText("Please enter valid numbers");
+                }
+            }
+        });
+
+        calcButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                CalculatorFrame calcFrame = new CalculatorFrame();
+                calcFrame.setVisible(true);
+            }
+        });
+
+        frame.setVisible(true);
+    }
+
+    // Inner class for the calculator frame
+    static class CalculatorFrame extends JFrame {
+        public CalculatorFrame() {
+            setTitle("Calculator");
+            setSize(300, 300);
+            setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            setLayout(new GridBagLayout());
+            GridBagConstraints gbc = new GridBagConstraints();
+            gbc.insets = new Insets(5, 5, 5, 5);
+
+            JTextField display = new JTextField(10);
+            display.setEditable(false);
+            gbc.gridwidth = 4;
+            gbc.gridx = 0;
+            gbc.gridy = 0;
+            add(display, gbc);
+
+            String[] buttons = {
+                "7", "8", "9", "/",
+                "4", "5", "6", "*",
+                "1", "2", "3", "-",
+                "0", ".", "=", "+"
+            };
+
+            ActionListener calcListener = new ActionListener() {
+                StringBuilder currentInput = new StringBuilder();
+                String operator = "";
+                double firstNum = 0;
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    String command = e.getActionCommand();
+                    if ("0123456789.".contains(command)) {
+                        currentInput.append(command);
+                        display.setText(currentInput.toString());
+                    } else if ("/-*+=.".contains(command)) {
+                        if (command.equals("=")) {
+                            double secondNum = Double.parseDouble(currentInput.toString());
+                            switch (operator) {
+                                case "/":
+                                    firstNum /= secondNum;
+                                    break;
+                                case "*":
+                                    firstNum *= secondNum;
+                                    break;
+                                case "-":
+                                    firstNum -= secondNum;
+                                    break;
+                                case "+":
+                                    firstNum += secondNum;
+                                    break;
+                            }
+                            display.setText(String.valueOf(firstNum));
+                            currentInput.setLength(0);
+                        } else {
+                            firstNum = Double.parseDouble(currentInput.toString());
+                            operator = command;
+                            currentInput.setLength(0);
+                        }
+                    }
+                }
+            };
+
+            int gridx = 0;
+            int gridy = 1;
+            for (String text : buttons) {
+                JButton button = new JButton(text);
+                button.addActionListener(calcListener);
+                gbc.gridwidth = 1;
+                gbc.gridx = gridx++;
+                gbc.gridy = gridy;
+                add(button, gbc);
+                if (gridx > 3) {
+                    gridx = 0;
+                    gridy++;
+                }
+            }
+        }
+    }
+}
